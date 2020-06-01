@@ -9,6 +9,7 @@
           - image: circleci/python:3.6
         steps:
           - checkout
+          - node/install-packages 
           - run: echo "A minimal CircleCI pipleline step 1"
           - run: node --version
         
