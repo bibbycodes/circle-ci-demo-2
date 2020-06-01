@@ -10,12 +10,18 @@
           - run: echo "A minimal CircleCI pipleline step 1"
           - run: pip install ansible
           - run: pip list
+          - save_cache:
+                key: dependency-cache-{{ config.yml }}
+                paths:
+                    - .
         
       my_2nd_step:
         docker:
           - image: circleci/python:3.6
         steps:
           - checkout
+          - restore_cache:
+                key: dependency-cache-{{ config.yml }}
           - run: echo "A minimal CircleCI pipleline step2"
           - run: pip list
         
