@@ -11,7 +11,7 @@
           - run: pip install ansible
           - run: pip list
           - save_cache:
-                key: dependency-cache-{{ config.yml }}
+                key: dependency-cache-{{ checksum "requirements.txt" }}
                 paths:
                     - .
         
@@ -21,7 +21,7 @@
         steps:
           - checkout
           - restore_cache:
-                key: dependency-cache-{{ config.yml }}
+                key: dependency-cache-{{ checksum "requirements.txt" }}
           - run: echo "A minimal CircleCI pipleline step2"
           - run: pip list
         
