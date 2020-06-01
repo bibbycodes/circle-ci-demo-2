@@ -20,7 +20,7 @@
         steps:
           - checkout
           - run: echo "A minimal CircleCI pipleline step2"
-          - run: nodejs --version
+          - run: node --version
         
     workflows:
       version: 2.1
