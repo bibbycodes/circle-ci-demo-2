@@ -17,6 +17,8 @@
         steps:
           - checkout
           - run: echo "A minimal CircleCI pipleline step2"
+          - run: pip list
+        
     
     
     workflows:
