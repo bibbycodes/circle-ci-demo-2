@@ -10,7 +10,7 @@
         steps:
           - checkout
           - run: echo "A minimal CircleCI pipleline step 1"
-          - run: npm --version
+          - run: node --version
         
       my_2nd_step:
         docker:
