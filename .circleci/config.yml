@@ -9,18 +9,19 @@
           - checkout
           - run: echo "A minimal CircleCI pipleline step 1"
           - run: touch venv/step1.txt
-          - save_cache:
-                key: dependency-cache-{{ checksum "requirements.txt" }}
-                paths:
-                    - venv
+          - persist_to_workspace:
+            root: /home/circleci
+            paths:
+              - project
+
         
       my_2nd_step:
         docker:
           - image: circleci/python:3.6
         steps:
           - checkout
-          - restore_cache:
-                key: dependency-cache-{{ checksum "requirements.txt" }}
+          - attach_workspace:
+                at: /home/circleci
           - run: echo "A minimal CircleCI pipleline step2"
           - run: ls venv
         
