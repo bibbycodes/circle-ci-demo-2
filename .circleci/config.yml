@@ -1,0 +1,27 @@
+---
+    version: 2.1 
+    
+    jobs:
+      my_1st_step:
+        docker:
+          - image: circleci/python
+        steps:
+          - checkout
+          - run: echo "A minimal CircleCI pipleline step 1"
+        
+      my_2nd_step:
+        docker:
+          - image: circleci/python
+        steps:
+          - checkout
+          - run: echo "A minimal CircleCI pipleline step2"
+    
+    
+    workflows:
+      version: 2.1
+      myWorkflow:
+        jobs:
+          - my_1st_step
+          - my_2nd_step:
+              requires:
+                - my_1st_step
