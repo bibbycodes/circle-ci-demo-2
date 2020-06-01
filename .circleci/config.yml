@@ -1,6 +1,8 @@
 ---
-    version: 2.1 
-    
+    version: 2.1
+    orbs:
+      node: circleci/node@2.1.1
+
     jobs:
       my_1st_step:
         docker:
@@ -8,25 +10,16 @@
         steps:
           - checkout
           - run: echo "A minimal CircleCI pipleline step 1"
-          - run: touch venv/step1.txt
-          - persist_to_workspace:
-                root: /home/circleci
-                paths:
-                  - project
-
+          - run: npm --version
         
       my_2nd_step:
         docker:
           - image: circleci/python:3.6
         steps:
           - checkout
-          - attach_workspace:
-                at: /home/circleci
           - run: echo "A minimal CircleCI pipleline step2"
-          - run: ls venv
+          - run: npm --version
         
-    
-    
     workflows:
       version: 2.1
       myWorkflow:
